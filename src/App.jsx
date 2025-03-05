@@ -1,12 +1,39 @@
-import React from 'react'
+import axios, { Axios } from "axios";
+
+import React, { useEffect, useState } from "react";
+import Card from "./components/Card";
 
 const App = () => {
-  return (
-    <div>
-      <h1>hello from app.js</h1>
-      
-    </div>
-  )
-}
+  const [data, setdata] = useState([]);
 
-export default App
+  const datafun = async () => {
+    const data = await axios.get("https://fakestoreapi.in/api/products");
+    setdata(data.data.products);
+  };
+  useEffect(() => {
+    datafun();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+
+  const deletehandler = (idx) => {
+    const filterdata = data.filter((e) => e.idx !== idx);
+    setdata(filterdata);
+  };
+
+  return (
+    <div className="flex p-3 gap-3 flex-wrap">
+
+      {data.map((elem,index)=>(
+        <Card key={index} data={elem} idx={index} deletehandler={deletehandler}   />
+      ))}
+
+     
+    </div>
+  );
+};
+
+export default App;
