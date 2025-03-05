@@ -17,18 +17,13 @@ const App = () => {
   useEffect(() => {
     console.log(data);
   }, [data]);
-
-
-  const deletehandler = (idx) => {
-    const filterdata = data.filter((e) => e.idx !== idx);
-    setdata(filterdata);
-  };
+  
+  
 
   return (
     <div className="flex p-3 gap-3 flex-wrap">
-
       {data.map((elem,index)=>(
-        <Card key={index} data={elem} idx={index} deletehandler={deletehandler}   />
+        <Card key={index} data={elem}  />
       ))}
 
      

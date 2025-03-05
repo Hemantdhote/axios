@@ -1,13 +1,14 @@
 import React from "react";
 
 const Card = (props) => {
-  const {data,key, idx,deletehandler}=props;
-  console.log(data);
+  const {data,key}=props;
+  console.log(props);
+  
   
   
   return (
     <div >
-      <div key={key} className="rounded-2xl shadow-lg bg-white overflow-hidden w-80">
+      <div className="rounded-2xl shadow-lg bg-white overflow-hidden w-80">
         <img
           className="w-full h-60 object-cover"
           src={data.image}
@@ -22,7 +23,7 @@ const Card = (props) => {
               {data.discount}% OFF
             </span>
           </div>
-          <button onClick={(elem)=>deletehandler(elem)} className="px-2 py-1 bg-red-500 rounded-lg text-white mt-2">Delete</button>
+          <button className="px-2 py-1 bg-red-500 rounded-lg text-white mt-2">Delete</button>
         </div>
       </div>
     </div>
